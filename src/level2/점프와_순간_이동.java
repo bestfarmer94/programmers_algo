@@ -1,12 +1,13 @@
-class Solution {
+package src.level2;
+
+public class 점프와_순간_이동 {
     public int solution(int n) {
         int ans = 0;
 
         while (n != 0) {
-//            System.out.println(n);
             if (n % 2 == 0) {
                 n /= 2;
-            }else{
+            } else {
                 n -= 1;
                 ans++;
             }
@@ -16,7 +17,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        Solution s = new Solution();
+        점프와_순간_이동 s = new 점프와_순간_이동();
         int n = 5000;
         System.out.println(s.solution(n));
     }
