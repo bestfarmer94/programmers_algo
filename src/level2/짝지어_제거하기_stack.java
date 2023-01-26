@@ -7,7 +7,7 @@ public class 짝지어_제거하기_stack {
     {
         int answer = 0;
         Stack<Character> stack = new Stack();
-
+        // 스택 잘 이용하자
         for (int i = 0; i < s.length(); i++) {
             if (stack.empty()){
                 stack.push(s.charAt(i));
