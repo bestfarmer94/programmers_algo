@@ -5,7 +5,7 @@ import java.util.Stack;
 class 크레인_인형뽑기_게임 {
     static int answer;
     static Stack<Integer> toy;
-
+    //
     public int solution(int[][] board, int[] moves) {
         toy = new Stack<>();
 
