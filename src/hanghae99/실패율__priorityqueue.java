@@ -1,4 +1,6 @@
-import java.util.*;
+package src.hanghae99;
+
+import java.util.PriorityQueue;
 
 class Rate implements Comparable<Rate> {
     int stage;
@@ -21,7 +23,7 @@ class Rate implements Comparable<Rate> {
     }
 }
 
-class Solution {
+class 실패율 {
     public int[] solution(int N, int[] stages) {
         int[] answer = {};
         int[] now_stage = new int[N + 2];
@@ -47,7 +49,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        Solution s = new Solution();
+        실패율 s = new 실패율();
         int n = 5;
         int[] stages = new int[]{2, 1, 2, 6, 2, 4, 3, 3};
         System.out.println(s.solution(n, stages));
