@@ -17,7 +17,7 @@ public class Q3 {
             if(sosu[i]){
                 continue;
             }
-            int temp = 2*i;
+            int temp = i*i;
             while(temp <= arr[arr.length-1]){
                 sosu[temp] = true;
                 temp += i;

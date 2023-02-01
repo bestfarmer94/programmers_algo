@@ -1,6 +1,6 @@
-import java.util.*;
+package src.level2;
 
-class Solution {
+class n_2_배열_자르기 {
     public int[] solution(int n, long left, long right) {
         int[] answer = new int[(int) (right - left) + 1];
         for (long i = left; i <= right; i++) {
