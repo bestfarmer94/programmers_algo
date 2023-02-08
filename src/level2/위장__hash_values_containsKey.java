@@ -8,15 +8,15 @@ class 위장__hash_values_containsKey {
         HashMap<String, Integer> hash = new HashMap<>();
 
         for (String[] strings : clothes) {
-            if(hash.containsKey(strings[1])){
+            if (hash.containsKey(strings[1])) {
                 hash.put(strings[1], hash.get(strings[1]) + 1);
-            }else{
+            } else {
                 hash.put(strings[1], 1);
             }
         }
 
         for (int i : hash.values()) {
-            answer *= i+1;
+            answer *= i + 1;
         }
         return answer - 1;
     }

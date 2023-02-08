@@ -8,7 +8,7 @@ class 시저_암호__Character_isLowerCase {
             if (Character.isLowerCase(carr[i])) {
                 new_char = (char) ((carr[i] + n - 'a') % 26 + 'a');
             }
-            if(Character.isUpperCase(carr[i])){
+            if (Character.isUpperCase(carr[i])) {
                 new_char = (char) ((carr[i] + n - 'A') % 26 + 'A');
             }
             carr[i] = new_char;

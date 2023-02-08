@@ -1,8 +1,8 @@
 package src.LRU;
 
-import java.io.*;
 import java.util.*;
 
+//  solution 1
 //        테스트 1 〉	    통과 (0.52ms, 73.9MB)
 //        테스트 2 〉	    통과 (0.15ms, 75.4MB)
 //        테스트 3 〉	    통과 (0.56ms, 71.4MB)
@@ -24,6 +24,7 @@ import java.util.*;
 //        테스트 19 〉	통과 (2.64ms, 79.4MB)
 //        테스트 20 〉	통과 (3.12ms, 81MB)
 
+//  solution 2
 //        테스트 1 〉	    통과 (0.21ms, 81.4MB)
 //        테스트 2 〉	    통과 (0.13ms, 67MB)
 //        테스트 3 〉	    통과 (0.38ms, 77.7MB)
@@ -49,20 +50,16 @@ class TestcaseGenerator {
     static int N = 10000;
     static int capacity = 100000;
     static String[] cities;
+
     public static String generateRandomCityName() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 5; ++i) {
-            int randomValue = (int)(Math.random() * 52);
-            if (randomValue < 26) {
-                sb.append((char)(randomValue + 'a'));
-            }
-            else {
-                randomValue -= 26;
-                sb.append((char)(randomValue + 'A'));
-            }
+            int randomValue = (int) (Math.random() * 26);
+            sb.append((char) (randomValue + 'a'));
         }
         return sb.toString();
     }
+
     public static void setCities() {
         ArrayList<String> arrayList = new ArrayList<>();
         for (int i = 0; i < N; ++i) {
@@ -83,8 +80,7 @@ class Solution {
             cache.remove(city);
             cache.add(city);
             answer[0] += 1;
-        }
-        else {
+        } else {
             if (cache.size() == capacity) {
                 String firstKey = cache.iterator().next();
                 cache.remove(firstKey);
@@ -107,19 +103,19 @@ class Solution {
 
     public int solution2(int cacheSize, String[] cities) {
         int answer = 0;
-        Queue<String> hash = new LinkedList<>();
+        Queue<String> q = new LinkedList<>();
 
-        for(int i=0; i<cities.length; i++){
+        for (int i = 0; i < cities.length; i++) {
             String str = cities[i].toUpperCase();
-            if(hash.contains(str)){
-                hash.remove(str);
-                hash.add(str);
+            if (q.contains(str)) {
+                q.remove(str);
+                q.add(str);
                 answer += 1;
-            }else{
+            } else {
                 answer += 5;
-                hash.add(str);
-                if(hash.size() > cacheSize){
-                    hash.poll();
+                q.add(str);
+                if (q.size() > cacheSize) {
+                    q.poll();
                 }
             }
         }
@@ -128,72 +124,20 @@ class Solution {
 }
 
 class Main {
-    public static void solve(int testcase) throws IOException {
-
-    }
-
-    public static void solve() throws IOException {
-
-    }
-
     public static void main(String[] args) {
         TestcaseGenerator.setCities();
         Solution solution = new Solution();
         long start = System.currentTimeMillis();
+        // hash
         solution.solution(TestcaseGenerator.capacity, TestcaseGenerator.cities);
         long end = System.currentTimeMillis();
         System.out.println("solution: " + ((end - start) / 1000.0f));
 
         TestcaseGenerator.setCities();
         start = System.currentTimeMillis();
+        // Queue
         solution.solution2(TestcaseGenerator.capacity, TestcaseGenerator.cities);
         end = System.currentTimeMillis();
         System.out.println("solution2: " + ((end - start) / 1000.0f));
-    }
-
-
-    static class Reader {
-        public static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        public static StringTokenizer st = new StringTokenizer("");
-
-        public static boolean hasNextLine() throws IOException {
-            return in.ready();
-        }
-
-        public static String nextLine() throws IOException {
-            st = new StringTokenizer("");
-            return in.readLine();
-        }
-
-        public static String next() throws IOException {
-            while (!st.hasMoreTokens()) {
-                st = new StringTokenizer(in.readLine());
-            }
-            return st.nextToken();
-        }
-
-        public static int nextInt() throws IOException {
-            return Integer.parseInt(next());
-        }
-
-        public static long nextLong() throws IOException {
-            return Long.parseLong(next());
-        }
-
-        public static double nextDouble() throws IOException {
-            return Double.parseDouble(next());
-        }
-    }
-
-    static class Printer {
-        public static PrintWriter out = new PrintWriter(System.out);
-
-        public static void print(Object object) {
-            out.println(object);
-        }
-
-        public static void close() throws IOException {
-            out.close();
-        }
     }
 }
